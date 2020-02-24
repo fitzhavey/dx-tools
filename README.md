@@ -3,7 +3,7 @@ https://www.npmjs.com/package/dx-tools
 
 A CLI of useful tools to improve [developer experience](https://hackernoon.com/developer-experience-dx-devs-are-people-too-6590d6577afe).
 
-![dx-tools preview](./images/preview.png)
+![dx-tools preview](https://github.com/michaelfitzhavey/dx-tools/raw/master/images/preview.png)
 
 ## Installation
 To install this CLI globally run
@@ -21,7 +21,7 @@ Installs all dependencies for projects within a folder.
 
 The first argument given is the path to the folder to work on, if none is provided it will default to the current directory.
 
-![install-all-dependencies preview](./images/install-all-dependencies.png)
+![install-all-dependencies preview](https://github.com/michaelfitzhavey/dx-tools/raw/master/images/install-all-dependencies.png)
 
 ## Contributing
 
