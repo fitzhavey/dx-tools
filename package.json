@@ -1,0 +1,28 @@
+{
+	"name": "dx-tools",
+	"version": "0.0.2",
+	"description": "A CLI to help with nodeJS tasks",
+	"bin": {
+		"install-all-packages": "./install-all-packages.js"
+	},
+	"author": "Michael Fitzhavey",
+	"license": "ISC",
+	"dependencies": {
+		"chalk": "^3.0.0",
+		"clear": "^0.1.0",
+		"directory-tree": "^2.2.4",
+		"figlet": "^1.3.0"
+	},
+	"main": "index.js",
+	"directories": {
+		"lib": "lib"
+	},
+	"devDependencies": {
+		"@holistic-web/eslint-config": "^0.1.2",
+		"eslint": "^6.8.0"
+	},
+	"scripts": {
+		"lint": "eslint ."
+	},
+	"keywords": []
+}
