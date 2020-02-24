@@ -1,6 +1,6 @@
 {
 	"name": "dx-tools",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "A CLI to help with nodeJS tasks",
 	"bin": {
 		"dx-tools": "bin/dx-tools"
