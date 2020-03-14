@@ -13,15 +13,16 @@ npm install dx-tools --global
 
 ## Commands
 
-### `install-all-dependencies`
+### `execute-recursive`
 ```
-dx-tools install-all-dependencies <folder>
+dx-tools execute-recursive <folder> <command>
 ```
-Installs all dependencies for projects within a folder.
+Executes a command for all npm projects within a folder.
 
-The first argument given is the path to the folder to work on, if none is provided it will default to the current directory.
-
-![install-all-dependencies preview](https://github.com/michaelfitzhavey/dx-tools/raw/master/images/install-all-dependencies.png)
+| **Parameter** | **Default**  | **Description**                                |
+|---------------|--------------|------------------------------------------------|
+| `command`     | **required** | The command to run, for instance `npm install` |
+| `folder`      | `'.'`        | The folder in which to find npm projects       |
 
 ## Contributing
 
@@ -39,3 +40,8 @@ This project will automatically publish on merge to master branch. Should there 
 ```
 npm publish
 ```
+
+
+## Roadmap
+- use something like yargs to better handle input
+- have some form of help section
