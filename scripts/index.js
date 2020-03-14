@@ -1,5 +1,5 @@
-const installAllDependencies = require('./install-all-dependencies');
+const executeRecursive = require('./execute-recursive');
 
 module.exports = {
-	'install-all-dependencies': installAllDependencies
+	'execute-recursive': executeRecursive
 };
