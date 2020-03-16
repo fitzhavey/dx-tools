@@ -19,11 +19,8 @@ module.exports = async (givenFolder, givenCommand) => {
 	const projects = findProjects(folder);
 
 	cmd.log(`> Executing "${command}" on all projects...`);
-	const executions = projects.map(async project => {
+	projects.forEach(project => {
 		cmd.log(`> ${project}...`);
-		await executeCommand(project, command);
+		executeCommand(project, command);
 	});
-	await Promise.all(executions);
-
-	cmd.success('> Done.');
 };
