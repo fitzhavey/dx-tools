@@ -19,8 +19,11 @@ module.exports = async (givenFolder, givenCommand) => {
 	const projects = findProjects(folder);
 
 	cmd.log(`> Executing "${command}" on all projects...`);
-	projects.forEach(project => {
+
+	// eslint-disable-next-line no-restricted-syntax
+	for (const project of projects) {
 		cmd.log(`> ${project}...`);
-		executeCommand(project, command);
-	});
+		// eslint-disable-next-line no-await-in-loop
+		await executeCommand(project, command);
+	}
 };
