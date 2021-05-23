@@ -11,19 +11,18 @@ const cmd = require('../lib/cmd');
 const findProjects = require('../lib/findProjects');
 const executeCommand = require('../lib/executeCommand');
 
-module.exports = async (givenFolder, givenCommand) => {
-	let folder = givenFolder || process.argv[3];
-	const command = givenCommand || process.argv[4];
-	if (!folder) folder = '.';
-	cmd.log(`> Finding all projects in: "${folder}"...`);
+module.exports = async (folder, command) => {
+	// eslint-disable-next-line no-param-reassign
+	if (!folder || folder === '.') folder = process.cwd();
+	cmd.log(`> Finding all projects in: "${folder}"`);
 	const projects = findProjects(folder);
-
-	cmd.log(`> Executing "${command}" on all projects...`);
+	cmd.log(`> Executing "${command}" on all projects`);
 
 	// eslint-disable-next-line no-restricted-syntax
 	for (const project of projects) {
-		cmd.log(`> ${project}...`);
+		cmd.log(`> ${project}`);
 		// eslint-disable-next-line no-await-in-loop
 		await executeCommand(project, command);
+		cmd.log('\n');
 	}
 };

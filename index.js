@@ -19,7 +19,6 @@ module.exports = async () => {
 				args => {
 					script.options.forEach(options => {
 						const optionName = options.name;
-						delete options.name;
 						args.option(optionName, { ...options });
 					});
 				},
@@ -29,7 +28,6 @@ module.exports = async () => {
 					script.executable(...parameters);
 				}
 			).help().argv;
-
 		});
 
 
