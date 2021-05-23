@@ -43,5 +43,4 @@ npm publish
 
 
 ## Roadmap
-- use something like yargs to better handle input
 - have some form of help section
