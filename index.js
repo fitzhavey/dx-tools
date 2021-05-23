@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-expressions */
+const yargs = require('yargs');
 const cmd = require('./lib/cmd');
-const executeRecursive = require('./scripts/execute-recursive');
+const scripts = require('./scripts');
 
 module.exports = async () => {
 
@@ -8,24 +9,29 @@ module.exports = async () => {
 		cmd.clear();
 		cmd.title('DX Tools');
 
-		require('yargs')
-			.scriptName('dx-tools')
-			.usage('$0 <cmd> [args]')
-			.command('execute-recursive [folder] [command]', 'Execute given command for projects', yargs => {
-				yargs.option('folder', {
-					alias: 'f',
-					default: '.'
-				});
-				yargs.option('command', {
-					alias: 'c',
-					demandOption: true
-				});
-			}, argv => {
-				cmd.subTitle(`${argv._}:`);
-				executeRecursive(argv.folder, argv.command);
-			})
-			.help()
-			.argv;
+		// configure arguments for scripts
+		yargs.usage('$0 <cmd> [args]');
+		Object.keys(scripts).forEach(scriptName => {
+			const script = scripts[scriptName];
+			yargs.command(
+				script.command,
+				script.description,
+				args => {
+					script.options.forEach(options => {
+						const optionName = options.name;
+						delete options.name;
+						args.option(optionName, { ...options });
+					});
+				},
+				args => {
+					cmd.subTitle(`${args._}:`);
+					const parameters = script.options.map(option => args[option.name]);
+					script.executable(...parameters);
+				}
+			).help().argv;
+
+		});
+
 
 	} catch (err) {
 		cmd.error(err);
